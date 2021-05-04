@@ -24,11 +24,3 @@
     </system>
 </config>
 
-<group id="test" translate="label" type="text" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="0">
-    <label>Your Title</label>
-    <field id="enable_module" translate="label" type="select" showInDefault="1" canRestore="1">
-        <label>Enabled</label>
-        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-    </field>
-</group>
-
