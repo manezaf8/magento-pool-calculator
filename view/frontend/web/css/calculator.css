@@ -1,0 +1,19 @@
+.pool-calculator-form {
+  max-width: 100px;
+}
+.pool-calculator-form label {
+  display: block;
+  font-weight: bold;
+}
+.pool-calculator-form label span {
+  display: inline-block;
+  width: 200px;
+}
+.pool-calculator-form label span em {
+  font-weight: normal;
+  font-style: italic;
+}
+.pool-calculator-form label input {
+  width: 70px;
+  
+}

@@ -1,0 +1,31 @@
+{
+  "name": "maneza/module-calculator",
+  "type": "magento2-module",
+  "description": "Magento 2 UI Component",
+  "license": "osl-3.0",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  ],
+  "require": {
+    "magento/framework": "101.0.*"
+  },
+  "authors": [
+    {
+      "name": "Ntabethemba Mabsteh",
+      "email": "bmaneza@gmail.com",
+      "homepage": "https://www.manezaf8.co.za",
+      "role": "Backend Developer"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Maneza\\Calculator\\": ""
+    }
+  }
+}

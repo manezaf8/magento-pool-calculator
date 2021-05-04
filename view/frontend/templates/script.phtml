@@ -1,0 +1,117 @@
+<?php
+    /**
+     * Add a pool calculator in price.main.info block
+     *
+     * @var $block \Maneza\Calculator\Block\CurrentProduct
+     */
+   $currentProduct = $block->getProduct();
+   if ($currentProduct):
+   $poolValue = null;
+   $intValue = null;
+   
+     $poolValue =  !empty($currentProduct->getItemVolume()) ? $currentProduct->getItemVolume() : '';
+     if(is_numeric($poolValue))
+     {
+        $intValue = (int)$poolValue;
+     }
+     
+?>
+
+<?php  if($poolValue > 0 || !empty($poolValue)): //if the item have the pool volume then this calculator should show ?>
+
+<div class="pool-cal-input-wrapper" >
+     <!-- Grand Total -->
+    <h1><strong><label><span id="total"></span></label></strong></h1>
+
+        <div class="pool-calculator-form">
+        <p><h3>How big is your pool?</h3></p>
+            <label><span>Length <em>(m)</em></span> </label>
+            <input type="number" name="length" min="1" max="2500" required>
+
+            <label><span>Width <em>(m)</em></span>   </label>
+            <input type="number" name="width" min="1" max="2500" required>
+
+            <label><span>Average Depth <em>(m)</em></span>  </label>
+            <input type="number" name="depth" min="1" max="50" required>
+
+            <input type="hidden" name="calc-type" value="oval">
+            <br />
+            <br />
+            <!-- display the about volume here  -->
+            <p>Your pool volume is: </p>
+            <h3 class="gallons-display" style="color: #e32c29;"><em></em></h3>
+            <h5 class="qty-1"></h5>
+           <br />
+        <button>Calculate</button>
+        <br />
+        <br />
+   </div>
+</div>
+
+
+<!-- Ui Component -->
+
+<!-- new calculator script  -->
+<script>
+    require([
+            "jquery"
+        ], function($){
+
+            $( document ).ready(function() {               
+                let price = document.querySelector("div.product-info-price > div.price-box.price-final_price > span.normal-price > span > span > span");
+                price.insertAdjacentHTML( "beforeend", " per item "); //price-container price-final_price
+                
+
+                jQuery(".pool-calculator-form").on("click", ".thim-button, button", function (e) {
+                    'use strict';
+                    //varibles for the calculator 
+                    var $this = $(this);
+                    var $form = $this.parents(".pool-calculator-form");
+                    var $type = $form.find("[name=calc-type]").eq(0);
+                    var type = ($type.length === 1) ? $type.val() : false;
+                    var length = null;
+                    var width = null;
+                    var depth = null;
+                    var multiplier = null;
+                    var gallons = "";
+                    var $temp = null;
+                    let quantity = document.getElementById('qty');
+                    // add per item at the end of price 
+                
+                    e.preventDefault();
+                    
+                    if (type !== false) {
+                    
+                        multiplier = 1000; //added as extra number to complete the calculator formula 
+                        $temp = $form.find("[name=length]").eq(0);
+                        length = ($temp.length === 1) ? $temp.val() : NaN;
+                        $temp = $form.find("[name=width]").eq(0);
+                        width = ($temp.length === 1) ? $temp.val() : NaN;
+                        $temp = $form.find("[name=depth]").eq(0);
+                        depth = ($temp.length === 1) ? $temp.val() : NaN;
+                        if (!isNaN(depth) && !isNaN(length) && !isNaN(width)) {
+                            depth = parseInt(depth);
+                            length = parseInt(length);
+                            width = parseInt(width);
+                            gallons = Math.ceil(length * width * depth * multiplier); //final calculations 
+                        } else { gallons = ""; }
+                        
+                    }
+
+                    var itemVolume = <?php echo !empty($intValue) ? $intValue: 0 ; ?>;  //how many litres covered by bottle 
+                    var totalQty = gallons / itemVolume; //divid the total litres with the amount of covered by the bottle
+                    quantity.innerHTML = Math.ceil(totalQty); //add this to qty
+                    quantity.value = Math.ceil(totalQty); // $(this).prev('#input1').val(value); //the new value of the qty
+
+                    if (!isNaN(gallons)) {
+                        $form.find(".gallons-display").text(gallons + " litres"); //add text to a html class .gallons-display
+                        $form.find(".qty-1").text("You will need a minimum of " + Math.ceil(totalQty) + " items for your pool."); //${Math.ceil(numofboxes)}
+                    } else {
+                        $form.find(".gallons-display").text("your fields might be empty... ");
+                    }
+            });
+            });	
+        });
+ </script>
+ <?php endif; ?>
+<?php endif; ?>

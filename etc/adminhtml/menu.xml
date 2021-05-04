@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <update id="Maneza_Extensions::manezaextensions" 
+                title="maneza Pool Extensions" 
+                module="Magento_Backend" 
+                sortOrder="70" 
+                resource="Maneza_Extensions::manezaextensions"/>   
+        
+        <add id="Maneza_Calculator::manezacalculator" 
+             title="Pool Calculator" 
+             module="Maneza_Calculator" 
+             sortOrder="10" 
+             parent="Maneza_Extensions::manezaextensions" 
+             resource="Maneza_Calculator::manezacalculator" />
+
+        <add id="Maneza_Calculator::system_config" 
+             title="Configurations" 
+            module="Maneza_Calculator" 
+             sortOrder="12" 
+             parent="Maneza_Calculator::manezacalculator" 
+            action="adminhtml/system_config/edit/section/manezacalculator" 
+            resource="Maneza_Calculator::system_config" />
+    </menu>
+</config>
