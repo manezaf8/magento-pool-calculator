@@ -10,11 +10,12 @@
             <label>Pool Calculator</label>
             <tab>manezaextensions</tab>
             <resource>Maneza_Calculator::system_config</resource>
-            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" 
+            <group id="general" translate="label" type="text" sortOrder="1" 
+                   showInDefault="1" 
                    showInWebsite="1" 
                    showInStore="1">
                 <label>General Settings</label>
-                <field id="enable_in_frontend" translate="label" type="select" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enable_module" translate="label" type="select" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable in frontend</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
@@ -22,4 +23,12 @@
         </section>
     </system>
 </config>
+
+<group id="test" translate="label" type="text" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="0">
+    <label>Your Title</label>
+    <field id="enable_module" translate="label" type="select" showInDefault="1" canRestore="1">
+        <label>Enabled</label>
+        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+    </field>
+</group>
 
