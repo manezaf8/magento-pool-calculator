@@ -15,7 +15,7 @@
 - Calculates the volume of the pool
 - Adds Pool volume attribute to add the item volume.
 - increases QTY According to the total amount 
-- Hides the calculator if the product doesn't have the pool volume velue.
+- Hides the calculator if the product doesn't have the pool volume value.
 
 ## Installation
 \* = in production please use the `--keep-generated` option when running `bin/magento setup:upgrade`
