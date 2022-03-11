@@ -1,4 +1,12 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Maneza_Calculator" setup_version="1.0.0" />
+<!--
+/**
+ * @package   Maneza_Calculator
+ * @author    Ntabethemba Mabetshe
+ * @copyright Copyright (c) 2021 Maneza F8
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Maneza_Calculator" setup_version="1.0.0"/>
 </config>
